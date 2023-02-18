@@ -1,0 +1,28 @@
+.form__label {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  font-size: 24px;
+}
+.form__input {
+  height: 24px;
+  font-size: 18px;
+  width: 350px;
+  margin-top: 10px;
+}
+.form__button {
+  width: auto;
+  margin-right: auto;
+  font-size: 20px;
+  margin-top: 20px;
+  padding: 5px 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgb(25, 25, 25);
+  cursor: pointer;
+  background-color: rgb(223, 223, 223);
+  border-radius: 5px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.form__button:hover {
+  background-color: rgb(167, 167, 167);
+}
