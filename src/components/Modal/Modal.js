@@ -1,34 +1,25 @@
-import React, { Component } from 'react';
+import { useEffect } from 'react';
 import css from './modal.module.css';
 
-export default class Modal extends Component {
-  closeCallback = event => {
-    const { toggleModal } = this.props;
-
+export const Modal = ({ toggleModal, children }) => {
+  const closeCallback = event => {
     if (event.key === 'Escape') {
       toggleModal();
     }
   };
 
-  handlerClickBackdrop = event => {
-    const { toggleModal } = this.props;
+  const handlerClickBackdrop = event => {
     if (event.currentTarget === event.target) {
       toggleModal();
     }
   };
-  componentDidMount() {
-    window.addEventListener('keydown', this.closeCallback);
-  }
+  useEffect(() => {
+    window.addEventListener('keydown', closeCallback);
+  });
 
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.closeCallback);
-  }
-
-  render() {
-    return (
-      <div className={css.modal__backdrop} onClick={this.handlerClickBackdrop}>
-        <div className={css.modal__content}>{this.props.children}</div>
-      </div>
-    );
-  }
-}
+  return (
+    <div className={css.modal__backdrop} onClick={handlerClickBackdrop}>
+      <div className={css.modal__content}>{children}</div>
+    </div>
+  );
+};
